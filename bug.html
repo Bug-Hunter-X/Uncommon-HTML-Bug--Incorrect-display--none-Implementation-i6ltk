@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text should be hidden initially.
+  </div>
+
+  <script>
+    // Incorrect way to hide an element with display: none
+    document.getElementById("myDiv").style.display = "none";
+    //The problem is that this sets display to 'none', but it doesn't change the element to have a 'display' attribute at all, so if later code were to call getAttribute('display'), it would return null.
+    //The correct way to do this is by using style.setProperty("display", "none");
+    document.getElementById("myDiv").style.setProperty("display", "none");
+  </script>
+</body>
+</html>
